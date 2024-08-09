@@ -3,27 +3,59 @@
     <title>JinnyParkPhotography</title>
   </head>
   <body>
-    <header>
-      <h1>Jinny Park Photography</h1>
-      <nav>
-        <a href="./about.html">About</a>
-        <a href="./gallery.html">Gallery</a>
-        <a href="./contact.html">Contact</a>
-      </nav>
-    </header>
-    <main>
-      <h2>Welcome!! I'm Jinny Park!</h2>
-    </main>
-    <footer>
-      <h3>This is footer section</h3>
-      <h3>
-        <a href="https://www.instagram.com/jinnypark_photography">
-          @jinnypark_photography
-        </a>
-      </h3>
-    </footer>
+    <div id="root"></div>
     <script>
-      console.log("hello");
+      class Component {
+        $target;
+        state;
+        props;
+        constructor($target, props) {
+          this.$target = $target;
+          this.props = props;
+          this.setup();
+          this.setEvent();
+          this.render();
+        }
+        setup() {}
+        setEvent() {}
+        setState(newState) {
+          this.state = { ...this.state, newState };
+          this.render();
+        }
+        render() {
+          this.$target.innerHTML = this.template();
+          this.mounted();
+        }
+        template() { return '';} 
+        mounted() {}
+      }
+
+      class App extends Component {
+        template() {
+          return `
+            <header>
+              <h1>Jinny Park Photography</h1>
+              <nav>
+                <a href="./about.html">About</a>
+                <a href="./gallery.html">Gallery</a>
+                <a href="./contact.html">Contact</a>
+              </nav>
+            </header>
+            <main>
+              <h2>Welcome!! I'm Jinny Park!</h2>
+            </main>
+            <footer>
+              <h3>This is footer section</h3>
+              <h3>
+                <a href="https://www.instagram.com/jinnypark_photography">
+                  @jinnypark_photography
+                </a>
+              </h3>
+            </footer>
+          `;
+        }
+      }
+      new App(document.querySelector('#root'));
     </script>
   </body>
 </html>

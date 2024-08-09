@@ -1,2 +1,2 @@
-const bodyEl = document.querySelector("body");
-bodyEl.innerHTML = "Hello!! I'm late";
+const mainEl = document.querySelector("main");
+mainEl.innerHTML = "Hello!! I'm late";

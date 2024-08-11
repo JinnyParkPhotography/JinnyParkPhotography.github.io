@@ -3,7 +3,7 @@
     <title>JinnyParkPhotography</title>
   </head>
   <body>
-    <div id="root"></div>
+    <center id="root"></center>
     <script>
       class Component {
         $target;
@@ -31,16 +31,19 @@
       }
 
       class App extends Component {
+        setup() {
+          this.state = {
+            'nav': 'home',
+          }
+        }
+        mounted() {
+          const { nav } = this.state;
+          const $header = document.querySelector('[data-component="header"]');
+          new Header($header, { nav });
+        }
         template() {
           return `
-            <header>
-              <h1>Jinny Park Photography</h1>
-              <nav>
-                <a href="./about.html">About</a>
-                <a href="./gallery.html">Gallery</a>
-                <a href="./contact.html">Contact</a>
-              </nav>
-            </header>
+            <header data-component="header"></header>
             <main>
               <h2>Welcome!! I'm Jinny Park!</h2>
             </main>
@@ -55,6 +58,23 @@
           `;
         }
       }
+
+      class Header extends Component {
+        template() {
+          const { nav } = this.props;
+          return `
+            <h1>Jinny Park Photography</h1>
+            <h2>now = ${ nav }</h2>
+            <nav>
+              <a href="./about.html">About</a>
+              <a href="./gallery.html">Gallery</a>
+              <a href="./contact.html">Contact</a>
+            </nav>
+          `;
+        }
+      }
+
+
       new App(document.querySelector('#root'));
     </script>
   </body>

@@ -13,10 +13,12 @@
           this.$target = $target;
           this.props = props;
           this.setup();
+          this.setStyle();
           this.setEvent();
           this.render();
         }
         setup() {}
+        setStyle() {}
         setEvent() {}
         setState(newState) {
           this.state = { ...this.state, ...newState };
@@ -35,6 +37,11 @@
           this.state = {
             nav: 'welcome', // welcome, about, gallery contact
           }
+        }
+        setStyle() {
+          this.$target.style.cssText = 
+            "border: 1px solid black;" +
+            "";
         }
         mounted() {
           const { nav } = this.state;

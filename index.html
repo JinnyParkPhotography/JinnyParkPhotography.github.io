@@ -33,7 +33,7 @@
       class App extends Component {
         setup() {
           this.state = {
-            'nav': 'home', // home, about, gallery contact
+            nav: 'home', // home, about, gallery contact
           }
         }
         mounted() {
@@ -41,7 +41,10 @@
           const { changeNavHandler } = this;
 
           const $header = document.querySelector('[data-component="header"]');
-          new Header($header, { nav, changeNavHandler });
+          new Header($header, { 
+            nav, 
+            changeNavHandler: changeNavHandler.bind(this) 
+          });
           
           const $footer = document.querySelector('[data-component="footer"]');
           new Footer($footer);

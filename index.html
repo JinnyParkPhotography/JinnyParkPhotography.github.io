@@ -38,8 +38,10 @@
         }
         mounted() {
           const { nav } = this.state;
+          const { changeNavHandler } = this;
+
           const $header = document.querySelector('[data-component="header"]');
-          new Header($header, { nav });
+          new Header($header, { nav, changeNavHandler });
           
           const $footer = document.querySelector('[data-component="footer"]');
           new Footer($footer);
@@ -56,20 +58,30 @@
             <footer data-component="footer"></footer>
           `;
         }
+        changeNavHandler(nav) {
+          this.setState(nav);
+        }
       }
 
       class Header extends Component {
         template() {
           const { nav } = this.props;
           return `
-            <h1>Jinny Park Photography</h1>
+            <h1><a data-nav="home">Jinny Park Photography</a></h1>
             <h2>now = ${ nav }</h2>
             <nav>
-              <a href="./about.html">About</a>
-              <a href="./gallery.html">Gallery</a>
-              <a href="./contact.html">Contact</a>
+              <a data-nav="about">About</a>
+              <a data-nav="gallery">Gallery</a>
+              <a data-nav="contact">Contact</a>
             </nav>
           `;
+        }
+        setEvent() {
+          const { changeNavHandler } = this.props;
+          this.$target.addEventListener('click', ({ target }) => {
+            const { nav } = target.dataset;
+            changeNavHandler(nav);
+          });
         }
       }
 

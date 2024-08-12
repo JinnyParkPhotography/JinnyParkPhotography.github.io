@@ -33,28 +33,27 @@
       class App extends Component {
         setup() {
           this.state = {
-            'nav': 'home',
+            'nav': 'home', // home, about, gallery contact
           }
         }
         mounted() {
           const { nav } = this.state;
           const $header = document.querySelector('[data-component="header"]');
           new Header($header, { nav });
+          
+          const $footer = document.querySelector('[data-component="footer"]');
+          new Footer($footer);
+
         }
         template() {
           return `
             <header data-component="header"></header>
+            <hr/>
             <main>
               <h2>Welcome!! I'm Jinny Park!</h2>
             </main>
-            <footer>
-              <h3>This is footer section</h3>
-              <h3>
-                <a href="https://www.instagram.com/jinnypark_photography">
-                  @jinnypark_photography
-                </a>
-              </h3>
-            </footer>
+            <hr/>
+            <footer data-component="footer"></footer>
           `;
         }
       }
@@ -70,6 +69,18 @@
               <a href="./gallery.html">Gallery</a>
               <a href="./contact.html">Contact</a>
             </nav>
+          `;
+        }
+      }
+
+      class Footer extends Component {
+        template() {
+          return `
+            <h3>
+              <a href="https://www.instagram.com/jinnypark_photography">
+                @jinnypark_photography
+              </a>
+            </h3>
           `;
         }
       }

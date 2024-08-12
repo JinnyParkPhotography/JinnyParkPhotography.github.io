@@ -19,7 +19,7 @@
         setup() {}
         setEvent() {}
         setState(newState) {
-          this.state = { ...this.state, newState };
+          this.state = { ...this.state, ...newState };
           this.render();
         }
         render() {
@@ -39,6 +39,8 @@
         mounted() {
           const { nav } = this.state;
           const { changeNavHandler } = this;
+
+          alert(`From App-Mounted: ${nav}`)
 
           const $header = document.querySelector('[data-component="header"]');
           new Header($header, { 
@@ -62,7 +64,6 @@
           `;
         }
         changeNavHandler(nav) {
-          alert(`From App Change Nav Handler: ${nav}`);
           this.setState({ nav });
         }
       }

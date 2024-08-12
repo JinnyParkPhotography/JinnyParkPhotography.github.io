@@ -159,6 +159,7 @@
       }
       class Gallery extends Component{
         setup() {
+          alert("From Gallery Setup");
           const imageList = getImageList();
           alert(imageList);
           this.state = { imageList };

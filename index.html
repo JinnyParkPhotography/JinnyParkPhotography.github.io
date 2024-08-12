@@ -62,6 +62,7 @@
           `;
         }
         changeNavHandler(nav) {
+          alert(`From App Change Nav Handler: ${nav}`);
           this.setState({ nav });
         }
       }
@@ -83,7 +84,6 @@
           const { changeNavHandler } = this.props;
           this.$target.addEventListener('click', ({ target }) => {
             const { nav } = target.dataset;
-            alert(nav);
             changeNavHandler(nav);
           });
         }

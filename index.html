@@ -40,8 +40,6 @@
           const { nav } = this.state;
           const { changeNavHandler } = this;
 
-          alert(`From App-Mounted: ${nav}`)
-
           const $header = document.querySelector('[data-component="header"]');
           new Header($header, { 
             nav, 
@@ -84,8 +82,10 @@
         setEvent() {
           const { changeNavHandler } = this.props;
           this.$target.addEventListener('click', ({ target }) => {
-            const { nav } = target.dataset;
-            changeNavHandler(nav);
+            if(target.tagName === 'A') {
+              const { nav } = target.dataset;
+              changeNavHandler(nav);
+            }
           });
         }
       }

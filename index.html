@@ -172,8 +172,8 @@
         async getImageList() {
           const response = await fetch('https://picsum.photos/v2/list');
           if(response.ok) {
-            alert("From getImageList: "+response);
             const json = await response.json();
+            alert("From getImageList: "+response);
             return json;
           } else {
             alert("HTTP-Error: " + response.status);

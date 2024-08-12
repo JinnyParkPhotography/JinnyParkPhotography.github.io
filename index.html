@@ -33,7 +33,7 @@
       class App extends Component {
         setup() {
           this.state = {
-            nav: 'home', // home, about, gallery contact
+            nav: 'welcome', // welcome, about, gallery contact
           }
         }
         mounted() {
@@ -45,18 +45,20 @@
             nav, 
             changeNavHandler: changeNavHandler.bind(this) 
           });
-          
+
+          const $main = document.querySelector('[data-component="main"]');
+          new Main($main, {
+            nav
+          });
+
           const $footer = document.querySelector('[data-component="footer"]');
           new Footer($footer);
-
         }
         template() {
           return `
             <header data-component="header"></header>
             <hr/>
-            <main>
-              <h2>Welcome!! I'm Jinny Park!</h2>
-            </main>
+            <main data-component="main"></main>
             <hr/>
             <footer data-component="footer"></footer>
           `;
@@ -65,12 +67,11 @@
           this.setState({ nav });
         }
       }
-
       class Header extends Component {
         template() {
           const { nav } = this.props;
           return `
-            <h1><a href="#" data-nav="home">Jinny Park Photography</a></h1>
+            <h1><a href="#" data-nav="welcome">Jinny Park Photography</a></h1>
             <h2>now = ${ nav }</h2>
             <nav>
               <a href="#" data-nav="about">About</a>
@@ -89,7 +90,68 @@
           });
         }
       }
+      class Main extends Component {
+        mounted() {
+          const { nav } = this.props;
+          switch(nav) {
+            case 'welcome':
+              const $welcome = document.querySelector('[data-component="welcome"]');
+              new Welcome($welcome);
+              break;
+            case 'about':
+              const $about = document.querySelector('[data-component="about"]');
+              new About($about);
+              break;
+            case 'gallery':
+              const $gallery = document.querySelector('[data-component="gallery"]');
+              new Gallery($gallery);
+              break;
+            case 'contact':
+              const $contact = document.querySelector('[data-component="contact"]');
+              new Contact($contact);
+              break;
+            default:
+              alert(`${nav} is undefined... fix please!`);
+          }
+        }
+        template() {
+          return `
+            <div data-component="welcome"></div>
+            <div data-component="about"></div>
+            <div data-component="gallery"></div>
+            <div data-component="contact"></div>
+          `;
+        }
+      }
 
+      class Welcome extends Component{
+        template() {
+          return `
+            <h2>Welcome!! I'm Jinny Park!</h2>
+          `;
+        }
+      }
+      class About extends Component{
+        template() {
+          return `
+            <h2>Let me introduce myself!</h2>
+          `;
+        }
+      }
+      class Gallery extends Component{
+        template() {
+          return `
+            <h2>Gallery This is My Gallery</h2>
+          `;
+        }
+      }
+      class Contact extends Component{
+        template() {
+          return `
+            <h2>contact me!</h2>
+          `;
+        }
+      }
       class Footer extends Component {
         template() {
           return `
@@ -101,8 +163,6 @@
           `;
         }
       }
-
-
       new App(document.querySelector('#root'));
     </script>
   </body>

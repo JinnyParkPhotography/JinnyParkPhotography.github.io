@@ -2,11 +2,11 @@ class Header extends Component {
     template() {
       const { nav } = this.props;
       return `
-        <h1><a href="#" data-nav="welcome">Jinny Park Photography</a></h1>
+        <h1><a href="javascript:void(0)" data-nav="welcome">Jinny Park Photography</a></h1>
         <nav>
-          <a href="#" data-nav="about">About</a>
-          <a href="#" data-nav="gallery">Gallery</a>
-          <a href="#" data-nav="contact">Contact</a>
+          <a href="javascript:void(0)" data-nav="about">About</a>
+          <a href="javascript:void(0)" data-nav="gallery">Gallery</a>
+          <a href="javascript:void(0)" data-nav="contact">Contact</a>
         </nav>
       `;
     }

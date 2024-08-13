@@ -6,7 +6,7 @@ class Gallery extends Component{
       }
     }
     mounted() {
-      const { imageList } = this.state;
+      const { imageList, selectedId } = this.state;
       imageList.forEach(image => {
         const { id, author, width, height, download_url } = image;
         const $galleryItem = this.$target.querySelector(`[data-component="thumbnail-${id}"]`);

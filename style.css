@@ -5,12 +5,12 @@ a {
   a:hover {
     color: gray;
   }
-  .header {
+  header {
     height: auto;
   }
-  .main {
+  main {
     height: 66vh;
   }
-  .footer {
+  footer {
     height: auto;
   }

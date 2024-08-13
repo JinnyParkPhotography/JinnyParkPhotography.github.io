@@ -14,8 +14,8 @@ class App extends Component {
         changeNavHandler: changeNavHandler.bind(this) 
       });
 
-      const $main = document.querySelector('[data-component="main"]');
-      new Main($main, {
+      const $page = document.querySelector('[data-component="page"]');
+      new Page($page, {
         nav
       });
 
@@ -26,7 +26,7 @@ class App extends Component {
       return `
         <header data-component="header" class="header"></header>
         <hr/>
-        <main data-component="main" class="main"></main>
+        <main data-component="page" class="page"></main>
         <hr/>
         <footer data-component="footer" class="footer"></footer>
       `;

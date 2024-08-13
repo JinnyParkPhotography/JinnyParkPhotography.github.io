@@ -1,6 +1,6 @@
 class GalleryItem extends Component {
     template() {
-        const { id, author, width, height, url } = this.props;
+        const { id, author, width, height, download_url } = this.props;
         return `
             <p>id: ${id}</p>
             <p>author: ${author}</p>

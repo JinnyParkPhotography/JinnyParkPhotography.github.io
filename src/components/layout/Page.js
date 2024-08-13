@@ -1,4 +1,4 @@
-class Main extends Component {
+class Page extends Component {
     mounted() {
       const { nav } = this.props;
       switch(nav) {

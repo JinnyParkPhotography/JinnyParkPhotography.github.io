@@ -24,11 +24,11 @@ class App extends Component {
     }
     template() {
       return `
-        <header data-component="header" class="header"></header>
+        <header data-component="header"></header>
         <hr/>
-        <main data-component="page" class="page"></main>
+        <main data-component="page"></main>
         <hr/>
-        <footer data-component="footer" class="footer"></footer>
+        <footer data-component="footer"></footer>
       `;
     }
     changeNavHandler(nav) {

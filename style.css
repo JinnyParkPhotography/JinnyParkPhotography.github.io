@@ -10,6 +10,7 @@ a {
   }
   main {
     height: 66vh;
+    max-width: 100%;
   }
   footer {
     height: auto;

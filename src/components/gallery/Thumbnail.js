@@ -18,7 +18,7 @@ class Thumbnail extends Component {
         const { selectIdHandler } = this.props;
         this.$target.addEventListener('click', ({ target }) => {
             if(target.tagName === 'IMG') {
-                const { selectedid } = target.dataset;
+                const { selectedId } = target.dataset;
                 selectIdHandler(selectedId);
             }
         });

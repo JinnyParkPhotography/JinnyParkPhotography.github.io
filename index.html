@@ -1,206 +1,26 @@
 <html>
   <head>
     <title>JinnyParkPhotography</title>
-    <style>
-      a {
-        color: black;
-        text-decoration: none;
-      }
-      a:hover {
-        color: gray;
-      }
-      .header {
-        height: auto;
-      }
-      .main {
-        height: 60vh;
-      }
-      .footer {
-        height: auto;
-      }
-    </style>
+    <link href="./style.css" rel="stylesheet" type="text/css" />
+    <!-- core -->
+    <script src="./src/core/Component.js" defer></script>
+    <!-- page -->
+    <script src="./src/component/page/Welcome.js" defer></script>
+    <script src="./src/component/page/Gallery.js" defer></script>
+    <script src="./src/component/page/Contact.js" defer></script>
+    <script src="./src/component/page/About.js" defer></script>
+    <!-- layout -->
+    <script src="./src/component/layout/Header.js" defer></script>
+    <script src="./src/component/layout/Main.js" defer></script>
+    <script src="./src/component/layout/Footer.js" defer></script>
+    <!-- App -->
+    <script src="./src/component/App.js" defer></script>
+    <!-- assets -->
+    <script src="./assets/ImageList.js"></script>
+    <!-- index.js -->
+    <script src="./index.js" defer></script>
   </head>
   <body>
     <center id="root"></center>
-    <script>
-      class Component {
-        $target;
-        state;
-        props;
-        constructor($target, props) {
-          this.$target = $target;
-          this.props = props;
-          this.setup();
-          this.setEvent();
-          this.render();
-        }
-        setup() {}
-        setEvent() {}
-        setState(newState) {
-          this.state = { ...this.state, ...newState };
-          this.render();
-        }
-        render() {
-          this.$target.innerHTML = this.template();
-          this.mounted();
-        }
-        template() { return '';} 
-        mounted() {}
-      }
-
-      class App extends Component {
-        setup() {
-          this.state = {
-            nav: 'welcome', // welcome, about, gallery contact
-          }
-        }
-        mounted() {
-          const { nav } = this.state;
-          const { changeNavHandler } = this;
-
-          const $header = document.querySelector('[data-component="header"]');
-          new Header($header, { 
-            nav, 
-            changeNavHandler: changeNavHandler.bind(this) 
-          });
-
-          const $main = document.querySelector('[data-component="main"]');
-          new Main($main, {
-            nav
-          });
-
-          const $footer = document.querySelector('[data-component="footer"]');
-          new Footer($footer);
-        }
-        template() {
-          return `
-            <header data-component="header" class="header"></header>
-            <hr/>
-            <main data-component="main" class="main"></main>
-            <hr/>
-            <footer data-component="footer" class="footer"></footer>
-          `;
-        }
-        changeNavHandler(nav) {
-          this.setState({ nav });
-        }
-      }
-      class Header extends Component {
-        template() {
-          const { nav } = this.props;
-          return `
-            <h1><a href="#" data-nav="welcome">Jinny Park Photography</a></h1>
-            <nav>
-              <a href="#" data-nav="about">About</a>
-              <a href="#" data-nav="gallery">Gallery</a>
-              <a href="#" data-nav="contact">Contact</a>
-            </nav>
-          `;
-        }
-        setEvent() {
-          const { changeNavHandler } = this.props;
-          this.$target.addEventListener('click', ({ target }) => {
-            if(target.tagName === 'A') {
-              const { nav } = target.dataset;
-              changeNavHandler(nav);
-            }
-          });
-        }
-      }
-      class Main extends Component {
-        mounted() {
-          const { nav } = this.props;
-          switch(nav) {
-            case 'welcome':
-              const $welcome = document.querySelector('[data-component="welcome"]');
-              new Welcome($welcome);
-              break;
-            case 'about':
-              const $about = document.querySelector('[data-component="about"]');
-              new About($about);
-              break;
-            case 'gallery':
-              const $gallery = document.querySelector('[data-component="gallery"]');
-              new Gallery($gallery);
-              break;
-            case 'contact':
-              const $contact = document.querySelector('[data-component="contact"]');
-              new Contact($contact);
-              break;
-            default:
-              alert(`${nav} is undefined... fix please!`);
-          }
-        }
-        template() {
-          return `
-            <div data-component="welcome"></div>
-            <div data-component="about"></div>
-            <div data-component="gallery"></div>
-            <div data-component="contact"></div>
-          `;
-        }
-      }
-
-      class Welcome extends Component{
-        template() {
-          return `
-            <h2>Welcome!! I'm Jinny Park!</h2>
-            <img src="https://picsum.photos/500/300" alt="welcome"/>
-          `;
-        }
-      }
-      class About extends Component{
-        template() {
-          return `
-            <h2>Let me introduce myself!</h2>
-            <img src="https://picsum.photos/500/300" alt="welcome"/>
-          `;
-        }
-      }
-      class Gallery extends Component{
-        setup() {
-          const imageList = this.getImageList();
-          this.state = { imageList };
-        }
-        template() {
-          const { imageList } = this.state;
-          return `
-            <h2>Gallery This is My Gallery</h2>
-            ${imageList.map(v => `<li>${v.id}</li>`)}
-          `;
-        }
-        async getImageList() {
-          const response = await fetch('https://picsum.photos/v2/list');
-          if(response.ok) {
-            const json = await response.json();
-            alert("From getImageList: "+response);
-            return json;
-          } else {
-            alert("HTTP-Error: " + response.status);
-            return;
-          }
-        }
-      }
-      class Contact extends Component{
-        template() {
-          return `
-            <h2>contact me!</h2>
-            <img src="https://picsum.photos/500/300" alt="welcome"/>
-          `;
-        }
-      }
-      class Footer extends Component {
-        template() {
-          return `
-            <h3>
-              <a href="https://www.instagram.com/jinnypark_photography">
-                @jinnypark_photography
-              </a>
-            </h3>
-          `;
-        }
-      }
-      new App(document.querySelector('#root'));
-    </script>
   </body>
 </html>

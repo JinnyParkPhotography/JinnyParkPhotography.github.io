@@ -1,4 +1,4 @@
-class Page extends Component {
+class Page  extends Component {
     mounted() {
       const { nav } = this.props;
       switch(nav) {
@@ -28,6 +28,7 @@ class Page extends Component {
         <div data-component="about"></div>
         <div data-component="gallery"></div>
         <div data-component="contact"></div>
+        <div></div>
       `;
     }
   }

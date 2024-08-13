@@ -4,11 +4,12 @@ class Thumbnail extends Component {
         const sWidth = parseInt(width / 10);
         const sHeight = parseInt(height / 10);
         return `
-            <a href="javascript:void(0)" data-selectedId="${id}">
+            <a href="javascript:void(0)">
                 <img src="${download_url}" 
                     alt="${author}'s image" 
                     width="${sWidth}" 
                     height="${sHeight}"
+                    data-selectedId="${id}"
                 />
             </a>
         `;
@@ -16,7 +17,7 @@ class Thumbnail extends Component {
     setEvent() {
         const { selectIdHandler } = this.props;
         this.$target.addEventListener('click', ({ target }) => {
-            if(target.tagName === 'A') {
+            if(target.tagName === 'IMG') {
                 const { selectedId } = target.dataset;
                 selectIdHandler(selectedId);
             }

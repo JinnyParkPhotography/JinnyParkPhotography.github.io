@@ -32,7 +32,7 @@ class Gallery extends Component{
         </div>
         ${selectedId ? `
           <div data-component="modal" 
-            style="display: "absolute"; width: 100%; height: 100%"></div>  
+            style="display: "absolute"; width: 90%; height: 90%"></div>  
         ` : ''}
       `;
     }

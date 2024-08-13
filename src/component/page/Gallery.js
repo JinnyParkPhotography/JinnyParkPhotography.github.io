@@ -1,6 +1,7 @@
 class Gallery extends Component{
     setup() {
-        alert(IMAGE_LIST);
+        alert('hello, World!');
+        //alert(IMAGE_LIST);
     }
     // template() {
     //   const { imageList } = this.state;

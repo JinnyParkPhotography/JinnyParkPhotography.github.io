@@ -2,13 +2,14 @@ class Gallery extends Component{
     setup() {
       this.state = {
         imageList: IMAGE_LIST,
-        selectedId: ''
+        imageId: '',
+        mode: 'list', // list, detail
       }
     }
     mounted() {
-      const { imageList, selectedId } = this.state;
-      if(selectedId) {
-        const selectedImage = imageList.find(image => image.id === selectedId);
+      const { imageList, imageId } = this.state;
+      if(mode !== 'list') {
+        const selectedImage = imageList.find(image => image.id === imageId);
         const { id, author, width, height, download_url } = selectedImage;
         const $modal = this.$target.querySelector('[data-component="modal"]');
         new Modal($modal, { id, author, width, height, download_url });
@@ -24,9 +25,9 @@ class Gallery extends Component{
       }
     }
     template() {
-      const { imageList, selectedId } = this.state;
+      const { imageList, imageId } = this.state;
       return `
-        ${selectedId ? `
+        ${imageId ? `
           <div data-component="modal" 
             style="display: absolute; width: 90%; height: 90%"></div>  
         ` : `
@@ -38,7 +39,7 @@ class Gallery extends Component{
         `}
       `;
     }
-    selectIdHandler(selectedId) {
-      this.setState({ selectedId });
+    selectIdHandler(imageId) {
+      this.setState({ imageId });
     }
   }

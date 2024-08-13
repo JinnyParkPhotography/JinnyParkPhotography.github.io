@@ -9,7 +9,7 @@ class Thumbnail extends Component {
                     alt="${author}'s image" 
                     width="${sWidth}" 
                     height="${sHeight}"
-                    data-selectedId="${id}"
+                    data-selected-id="${id}"
                 />
             </a>
         `;
@@ -18,7 +18,7 @@ class Thumbnail extends Component {
         const { selectIdHandler } = this.props;
         this.$target.addEventListener('click', ({ target }) => {
             if(target.tagName === 'IMG') {
-                const { selectedId } = target.dataset;
+                const { selectedid } = target.dataset;
                 selectIdHandler(selectedId);
             }
         });

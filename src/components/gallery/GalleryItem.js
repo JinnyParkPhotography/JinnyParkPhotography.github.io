@@ -6,7 +6,7 @@ class GalleryItem extends Component {
             <p>author: ${author}</p>
             <p>width: ${width}</p>
             <p>height: ${height}</p>
-            <img src="${url}" alt="${author}'s image"/>
+            <img src="${download_url}" alt="${author}'s image"/>
         `;
     }
 }

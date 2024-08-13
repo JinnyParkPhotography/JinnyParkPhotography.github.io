@@ -16,7 +16,7 @@ class Gallery extends Component{
       return `
         <h2>Gallery This is My Gallery</h2>
         ${imageList.map(image => `
-            <div data-componnet="gallery-item-${image.id}"></div>
+            <div data-component="gallery-item-${image.id}"></div>
         `)}
       `;
     }

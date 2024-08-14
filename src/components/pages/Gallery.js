@@ -63,6 +63,7 @@ class Gallery extends Component{
     }
     get filteredImageList() {
       const { imageList, selectedImageTags } = this.state;      
-      return imageList.map(image => selectedImageTags.includes(image.author)); // 임시로 author로 한다.
+      return imageList.filter(image => selectedImageTags.includes(image.author)); // 임시로 author로 한다.
     }
    }
+   

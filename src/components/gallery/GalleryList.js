@@ -1,11 +1,11 @@
 class GalleryList extends Component {
     mounted() {
         const { $target } = this;
-        const { imageList, filteredImageList, 
+        const { selectedImageTags, imageList, filteredImageList, 
             changeTagsHandler, changeModeHandler, changeImageIdHandler } = this.props;
 
         const $galleryTags = $target.querySelector('[data-component="gallery-tags"]');
-        new GalleryTags($galleryTags, { imageList, changeTagsHandler });
+        new GalleryTags($galleryTags, { selectedImageTags, imageList, changeTagsHandler });
 
         const $galleryThumbnails = $target.querySelector('[data-component="gallery-thumbnails"]');
         new GalleryThumbnails($galleryThumbnails, { filteredImageList, 

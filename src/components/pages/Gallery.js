@@ -2,8 +2,8 @@ class Gallery extends Component{
     setup() {
       this.state = {
         imageList: IMAGE_LIST,
-        imageTags: [],
-        imageId: '',
+        selectedImageTags: [],
+        selectedImageId: '',
         mode: 'list', // list, detail
       }
     }
@@ -11,15 +11,15 @@ class Gallery extends Component{
       const { $target, 
         changeImageIdHandler, 
         changeModeHandler,
-        changeTagsHandler, 
+        changeTagsHandler,
         filteredImageList, 
         selectedImage } = this;
-      const { imageList, mode } = this.state;
+      const { imageList, selectedImageTags, mode } = this.state;
 
       switch (mode) {
         case 'list':
           const $galleryList = $target.querySelector('[data-component="gallery-list"]');
-          new GalleryList($galleryList, { imageList, filteredImageList,
+          new GalleryList($galleryList, { selectedImageTags, imageList, filteredImageList,
             changeImageIdHandler: changeImageIdHandler.bind(this),
             changeModeHandler: changeModeHandler.bind(this),
             changeTagsHandler: changeTagsHandler.bind(this)
@@ -48,8 +48,8 @@ class Gallery extends Component{
           return `<h1>${mode} is not allow in Gallery Component!</h1>`;
       }
     }
-    changeImageIdHandler(imageId) {
-      this.setState({ imageId });
+    changeImageIdHandler(selectedImageId) {
+      this.setState({ selectedImageId });
     }
     changeModeHandler(mode) {
       this.setState({ mode });
@@ -58,14 +58,14 @@ class Gallery extends Component{
       this.setState({ imageTags });
     }
     get selectedImage() {
-      const { imageList, imageId } = this.state;
-      return imageList.find(image => image.id === imageId);  
+      const { imageList, selectedImageId } = this.state;
+      return imageList.find(image => image.id === selectedImageId);  
     }
     get filteredImageList() {
-      const { imageList, imageTags } = this.state;
-      let result = [...imageList];
-      if(imageTags.length > 0) {
-        imageTags.forEach(tag => {
+      const { imageList, selectedImageTags } = this.state;
+      let result = [...selectedImageTags];
+      if(selectedImageTags.length > 0) {
+        selectedImageTags.forEach(tag => {
           result = result.filter(v => v.tags.include(tag));
         });
       }

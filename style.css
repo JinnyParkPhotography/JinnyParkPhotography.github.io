@@ -19,3 +19,6 @@ main {
 footer {
   height: auto;
 }
+.selectedTag {
+  border: 1px solid black;
+}

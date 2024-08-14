@@ -54,8 +54,8 @@ class Gallery extends Component{
     changeModeHandler(mode) {
       this.setState({ mode });
     }
-    changeTagsHandler(imageTags) {
-      this.setState({ imageTags });
+    changeTagsHandler(selectedImageTags) {
+      this.setState({ selectedImageTags });
     }
     get selectedImage() {
       const { imageList, selectedImageId } = this.state;

@@ -1,17 +1,21 @@
+body::-webkit-scrollbar {
+  display: none;
+}
 a {
     color: black;
     text-decoration: none;
-  }
-  a:hover {
-    color: gray;
-  }
-  header {
-    height: auto;
-  }
-  main {
-    height: 66vh;
-    max-width: 100%;
-  }
-  footer {
-    height: auto;
-  }
+}
+a:hover {
+  color: gray;
+}
+header {
+  height: auto;
+}
+main {
+  height: 66vh;
+  max-width: 100%;
+  overflow: scroll;
+}
+footer {
+  height: auto;
+}

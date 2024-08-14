@@ -3,14 +3,14 @@ class GalleryTags extends Component {
         const { selectedImageTags } = this.props;
         const { allImageTags } = this;
         return `
-            <h1>Hello! I'm Gallery Tags!</h1>
+            <h3>Pick my tags</h3>
             ${allImageTags.map(tag => `
                 <a href="javascript:void(0)" 
                     ${selectedImageTags.includes(tag) ? 
                     `class="selectedTag"` : ""}
                     data-tag="${tag}"
                 >${tag}</a>
-            `).join('')}
+            `).join(' / ')}
         `;
     }
     setEvent() {

@@ -18,7 +18,12 @@ class GalleryTags extends Component {
         this.$target.addEventListener('click', ({ target }) => {
             if(target.tagName === 'A') {
                 const { tag } = target.dataset;
-                selectedImageTags.push(tag);
+                if(selectedImageTags.includes(tag)) {
+                    const tagIndex = selectedImageTags.indexOf(tag);
+                    selectedImageTags.splice(tagIndex, 1);
+                } else {
+                    selectedImageTags.push(tag);
+                }
                 changeTagsHandler(selectedImageTags);
             }
         })

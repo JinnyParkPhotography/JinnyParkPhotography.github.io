@@ -62,13 +62,7 @@ class Gallery extends Component{
       return imageList.find(image => image.id === selectedImageId);  
     }
     get filteredImageList() {
-      const { imageList, selectedImageTags } = this.state;
-      let result = [...selectedImageTags];
-      if(selectedImageTags.length > 0) {
-        selectedImageTags.forEach(tag => {
-          result = result.filter(v => v.tags.include(tag));
-        });
-      }
-      return result;
+      const { imageList, selectedImageTags } = this.state;      
+      return imageList.map(image => selectedImageTags.includes(image.author)); // 임시로 author로 한다.
     }
    }

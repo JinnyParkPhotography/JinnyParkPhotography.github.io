@@ -14,12 +14,12 @@ class Gallery extends Component{
         changeTagsHandler, 
         filteredImageList, 
         selectedImage } = this;
-      const { mode } = this.state;
+      const { imageList, mode } = this.state;
 
       switch (mode) {
         case 'list':
           const $galleryList = $target.querySelector('[data-component="gallery-list"]');
-          new GalleryList($galleryList, { filteredImageList,
+          new GalleryList($galleryList, { imageList, filteredImageList,
             changeImageIdHandler: changeImageIdHandler.bind(this),
             changeModeHandler: changeModeHandler.bind(this),
             changeTagsHandler: changeTagsHandler.bind(this)
@@ -27,7 +27,7 @@ class Gallery extends Component{
           break;
         case 'detail':
           const $galleryDetail = $target.querySelector('[data-component="gallery-detail"]');
-          new GalleryDetail($galleryDetail, { selectedImage,
+          new GalleryDetail($galleryDetail, { filteredImageList, selectedImage,
             changeImageIdHandler: changeImageIdHandler.bind(this),
             changeModeHandler: changeModeHandler.bind(this)
           });

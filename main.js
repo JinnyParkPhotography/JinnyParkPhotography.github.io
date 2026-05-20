@@ -80,16 +80,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalDescription = document.getElementById('modalDescription');
     const modalClose = document.getElementById('modalClose');
 
-    // 갤러리 아이템 동적 생성
+    // 갤러리 아이템 동적 생성 (스켈레톤 로딩)
     galleryImages.forEach((imageSrc, index) => {
         const galleryItem = document.createElement('div');
-        galleryItem.className = 'gallery-item';
+        galleryItem.className = 'gallery-item loading';
         galleryItem.dataset.index = index;
 
         const img = document.createElement('img');
         img.src = imageSrc;
         img.alt = `Gallery Image ${index + 1}`;
         img.loading = 'lazy'; // Lazy loading
+
+        // 이미지 로드 완료 시 스켈레톤 제거
+        img.addEventListener('load', function() {
+            galleryItem.classList.remove('loading');
+        });
+
+        // 이미지 로드 실패 시
+        img.addEventListener('error', function() {
+            galleryItem.classList.remove('loading');
+            galleryItem.style.backgroundColor = '#555555';
+        });
 
         const overlay = document.createElement('div');
         overlay.className = 'overlay';

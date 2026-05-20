@@ -139,6 +139,22 @@ html {
     width: 100%;
 }
 
+/* 스켈레톤 로딩 */
+.gallery-item.loading {
+    background: linear-gradient(90deg, #333333 25%, #444444 50%, #333333 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
 .gallery-item img {
     width: 100%;
     height: auto;
@@ -379,7 +395,19 @@ html {
     letter-spacing: 0.5px;
 }
 
-/* ==================== 반응형: 태블릿 ==================== */
+/* ==================== 반응형: 태블릿 (가로 모드 포함) ==================== */
+@media (max-width: 1024px) {
+    .gallery-grid {
+        column-count: 2;
+        column-gap: 15px;
+    }
+
+    .gallery-item {
+        margin-bottom: 15px;
+    }
+}
+
+/* ==================== 반응형: 모바일 (세로 모드) ==================== */
 @media (max-width: 768px) {
     .gallery-grid {
         column-count: 2;
@@ -411,7 +439,7 @@ html {
     }
 }
 
-/* ==================== 반응형: 모바일 ==================== */
+/* ==================== 반응형: 작은 모바일 ==================== */
 @media (max-width: 480px) {
     .gallery-grid {
         column-count: 1;

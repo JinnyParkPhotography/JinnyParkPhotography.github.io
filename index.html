@@ -3,25 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JinnyPark Photography</title>
-    <link href="./style.css" rel="stylesheet" />
+    <meta name="description" content="Jinny Park의 포토그래피 포트폴리오 - 전문 사진가의 작품을 만나보세요.">
+    <meta name="keywords" content="사진, 포트폴리오, 포토그래피, Jinny Park">
+    <meta name="author" content="Jinny Park">
+    <meta property="og:title" content="JINNYPARK PHOTOGRAPHY - 포토그래피 포트폴리오">
+    <meta property="og:description" content="전문 사진가 Jinny Park의 포트폴리오입니다.">
+    <meta property="og:type" content="website">
+    <meta name="google-site-verification" content="">
+    <title>JINNYPARK PHOTOGRAPHY - Home</title>
+    <link rel="canonical" href="https://jinnyparkphotography.github.io/">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="wrapper">
-        <header>
-            <h1><a href="/">JinnyPark Photography</a></h1>
-            <nav>
-                <a href="/about.html">About</a>
-                <a href="/archive.html">Archive</a>
-                <a href="/contact.html">Contact</a>
-            </nav>
-        </header>
-        <main>
-            <h2>Welcome!</h2>
-        </main>
-        <footer>
-            
-        </footer>
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">JINNYPARK PHOTOGRAPHY</a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link active">Home</a></li>
+                        <li><a href="about.html" class="nav-link">About</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="main-content">
+        <div class="container">
+            <section class="gallery-section">
+                <h1 class="gallery-title">Gallery</h1>
+                <div class="gallery-grid">
+                    <!-- 샘플 이미지 10개 -->
+                    <div class="gallery-item" data-index="1">
+                        <img src="https://images.unsplash.com/photo-1606933248051-5ce98adc16fa?w=400&h=500&fit=crop" alt="Gallery Image 1">
+                        <div class="overlay">Click to view</div>
+                    </div>
+                    <div class="gallery-item" data-index="2">
+                        <img src="https://images.unsplash.com/photo-1511379938547-c1f69b13d835?w=400&h=500&fit=crop" alt="Gallery Image 2">
+                        <div class="overlay">Click to view</div>
+                    </div>
+                    <div class="gallery-item" data-index="3">
+                        <img src="https://images.unsplash.com/photo-1606933248051-5ce98adc16fa?w=400&h=300&fit=crop" alt="Gallery Image 3">
+                        <div class="overlay">Click to view</div>
+                    </div>
+                    <div class="gallery-item" data-index="4">
+                        <img src="https://images.unsplash.com/photo-1491438639943-bc4914采取-7f39-a7f5-b4a4-2c1e7f5a7d5f?w=400&h=400&fit=crop" alt="Gallery Image 4">
+                        <div class="overlay">Click to view</div>
+                    </div>
+                    <div class="gallery-item" data-index="5">
+                        <img src="https://images.unsplash.com/photo-1511379938547-c1f69b13d835?w=400&h=600&fit=crop" alt="Gallery Image 5">
+                        <div class="overlay">Click to view</div>
+                    </div>
+                    <div class="gallery-item" data-index="6">
+                        <img src="https://images.unsplash.com/photo-1606933248051-5ce98adc16fa?w=400&h=400&fit=crop" alt="Gallery Image 6">
+                        <div class="overlay">Click to view</div>
+                    </div>
+                    <div class="gallery-item" data-index="7">
+                        <img src="https://images.unsplash.com/photo-1511379938547-c1f69b13d835?w=400&h=500&fit=crop" alt="Gallery Image 7">
+                        <div class="overlay">Click to view</div>
+                    </div>
+                    <div class="gallery-item" data-index="8">
+                        <img src="https://images.unsplash.com/photo-1606933248051-5ce98adc16fa?w=400&h=350&fit=crop" alt="Gallery Image 8">
+                        <div class="overlay">Click to view</div>
+                    </div>
+                    <div class="gallery-item" data-index="9">
+                        <img src="https://images.unsplash.com/photo-1511379938547-c1f69b13d835?w=400&h=450&fit=crop" alt="Gallery Image 9">
+                        <div class="overlay">Click to view</div>
+                    </div>
+                    <div class="gallery-item" data-index="10">
+                        <img src="https://images.unsplash.com/photo-1606933248051-5ce98adc16fa?w=400&h=500&fit=crop" alt="Gallery Image 10">
+                        <div class="overlay">Click to view</div>
+                    </div>
+                    <!-- 새 이미지는 여기에 추가 -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 모달 팝업 -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <img class="modal-image" id="modalImage" src="" alt="Full size image">
+            <div class="modal-info">
+                <h2 id="modalTitle">Image Title</h2>
+                <p id="modalDescription">Image description goes here</p>
+            </div>
+        </div>
     </div>
+
+    <!-- 풋터 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Jinny Park Photography. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>

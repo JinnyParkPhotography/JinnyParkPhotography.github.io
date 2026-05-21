@@ -34,9 +34,17 @@
     <!-- 메인 콘텐츠 -->
     <main class="main-content">
         <div class="container">
+            <!-- 태그 필터링 섹션 -->
+            <section class="filter-section">
+                <div class="filter-buttons" id="filterButtons">
+                    <!-- JavaScript에서 동적으로 생성 -->
+                </div>
+            </section>
+
+            <!-- 갤러리 섹션 -->
             <section class="gallery-section">
                 <div class="gallery-grid" id="galleryGrid">
-                    <!-- JavaScript로 동적 생성 -->
+                    <!-- JavaScript에서 동적으로 생성 -->
                 </div>
             </section>
         </div>
@@ -49,7 +57,8 @@
             <img class="modal-image" id="modalImage" src="" alt="Full size image">
             <div class="modal-info">
                 <h2 id="modalTitle">Image Title</h2>
-                <p id="modalDescription">Image description goes here</p>
+                <p id="modalDescription">Image description</p>
+                <div class="modal-tags" id="modalTags"></div>
             </div>
         </div>
     </div>

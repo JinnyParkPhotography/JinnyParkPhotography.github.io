@@ -207,6 +207,34 @@ function getFilteredImages() {
     );
 }
 
+// ==================== Masonry 높이 계산 함수 ====================
+function calculateMasonryHeights() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    galleryItems.forEach(item => {
+        const img = item.querySelector('img');
+        
+        // 이미지가 로드되었는지 확인
+        if (img && img.complete) {
+            // 이미지의 실제 높이를 계산
+            const itemHeight = item.getBoundingClientRect().height;
+            const rowSpan = Math.ceil(itemHeight / 10);
+            
+            // grid-row-end에 span 값 할당
+            item.style.gridRowEnd = `span ${rowSpan}`;
+        } else if (img) {
+            // 이미지가 아직 로드 중이면 로드 완료 후 계산
+            img.addEventListener('load', function calculateHeight() {
+                setTimeout(() => {
+                    const itemHeight = item.getBoundingClientRect().height;
+                    const rowSpan = Math.ceil(itemHeight / 10);
+                    item.style.gridRowEnd = `span ${rowSpan}`;
+                }, 0);
+            });
+        }
+    });
+}
+
 // ==================== DOM 렌더링 함수 ====================
 // 필터 버튼 렌더링
 function renderFilterButtons() {
@@ -245,6 +273,8 @@ function renderGallery(images) {
         // 이미지 로드 완료 시 스켈레톤 제거
         img.addEventListener('load', function() {
             galleryItem.classList.remove('loading');
+            // 이미지 로드 완료 후 높이 재계산
+            calculateMasonryHeights();
         });
 
         // 이미지 로드 실패
@@ -283,6 +313,9 @@ function renderGallery(images) {
 
         galleryGrid.appendChild(galleryItem);
     });
+
+    // 갤러리 렌더링 완료 후 높이 계산
+    setTimeout(calculateMasonryHeights, 100);
 }
 
 // 토글 필터 (태그 버튼 클릭)
@@ -303,7 +336,7 @@ function toggleFilter(tag) {
     renderGallery(filteredImages);
 }
 
-// 필터 버튼 상태 ���데이트
+// 필터 버튼 상태 업데이트
 function updateFilterButtons() {
     document.querySelectorAll('.filter-btn').forEach(btn => {
         const tag = btn.dataset.filter;
@@ -398,4 +431,14 @@ document.addEventListener('DOMContentLoaded', function() {
             header.style.boxShadow = 'none';
         }
     });
+});
+
+// 페이지 로드 완료 후 한 번 더 높이 계산
+window.addEventListener('load', function() {
+    calculateMasonryHeights();
+});
+
+// 윈도우 리사이즈 시 높이 재계산
+window.addEventListener('resize', function() {
+    calculateMasonryHeights();
 });

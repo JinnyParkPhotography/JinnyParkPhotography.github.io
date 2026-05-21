@@ -173,7 +173,6 @@ html {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     grid-auto-rows: auto;
-    grid-template-rows: masonry;
 }
 
 .gallery-item {
@@ -309,6 +308,8 @@ html {
     object-fit: contain;
     margin-top: 40px;
     border-radius: 4px;
+    width: auto;
+    height: auto;
 }
 
 .modal-info {

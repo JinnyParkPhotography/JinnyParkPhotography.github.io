@@ -163,14 +163,17 @@ html {
     font-weight: 700;
 }
 
-/* ==================== 갤러리 섹션 (Column-based Masonry Layout) ==================== */
+/* ==================== 갤러리 섹션 (Masonry Layout with Grid) ==================== */
 .gallery-section {
     padding: 40px 0;
 }
 
 .gallery-grid {
-    column-count: 4;
-    column-gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    grid-auto-rows: 10px;
+    grid-auto-flow: dense;
 }
 
 .gallery-item {
@@ -181,10 +184,6 @@ html {
     border-radius: 4px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     transition: transform var(--transition);
-    display: inline-block;
-    width: 100%;
-    margin-bottom: 20px;
-    break-inside: avoid;
 }
 
 /* 스켈레톤 로딩 */
@@ -205,9 +204,10 @@ html {
 
 .gallery-item img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     transition: transform var(--transition);
+    object-fit: cover;
 }
 
 .gallery-item:hover img {
@@ -488,7 +488,8 @@ html {
 /* ==================== 반응형: 태블릿 (가로 모드) ==================== */
 @media (max-width: 1024px) {
     .gallery-grid {
-        column-count: 3;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
     }
 
     .container {
@@ -499,12 +500,8 @@ html {
 /* ==================== 반응형: 모바일 (세로 모드) ==================== */
 @media (max-width: 768px) {
     .gallery-grid {
-        column-count: 2;
-        column-gap: 15px;
-    }
-
-    .gallery-item {
-        margin-bottom: 15px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
 
     .filter-section {

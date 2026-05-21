@@ -183,8 +183,7 @@ const galleryImages = [
 ];
 
 // ==================== 상태 관리 ====================
-let currentFilter = 'all';
-let allTags = [];
+let activeFilters = new Set(); // 활성화된 필터들을 저장하는 Set
 
 // ==================== 유틸리티 함수 ====================
 // 모든 고유 태그 추출
@@ -197,28 +196,23 @@ function extractAllTags() {
 }
 
 // 필터된 이미지 가져오기
-function getFilteredImages(filter) {
-    if (filter === 'all') {
+function getFilteredImages() {
+    if (activeFilters.size === 0) {
+        // 활성화된 필터가 없으면 모든 이미지 반환 (전체 보기)
         return galleryImages;
     }
-    return galleryImages.filter(image => image.tags.includes(filter));
+    // 활성화된 필터 중 하나라도 포함하는 이미지 반환
+    return galleryImages.filter(image => 
+        image.tags.some(tag => activeFilters.has(tag))
+    );
 }
 
 // ==================== DOM 렌더링 함수 ====================
 // 필터 버튼 렌더링
 function renderFilterButtons() {
     const filterButtonsContainer = document.getElementById('filterButtons');
+    const allTags = extractAllTags();
     filterButtonsContainer.innerHTML = '';
-
-    // '전체보기' 버튼
-    const allBtn = document.createElement('button');
-    allBtn.className = 'filter-btn active';
-    allBtn.textContent = '전체보기';
-    allBtn.dataset.filter = 'all';
-    allBtn.addEventListener('click', function() {
-        setActiveFilter('all');
-    });
-    filterButtonsContainer.appendChild(allBtn);
 
     // 태그 버튼들
     allTags.forEach(tag => {
@@ -227,7 +221,7 @@ function renderFilterButtons() {
         btn.textContent = tag;
         btn.dataset.filter = tag;
         btn.addEventListener('click', function() {
-            setActiveFilter(tag);
+            toggleFilter(tag);
         });
         filterButtonsContainer.appendChild(btn);
     });
@@ -291,21 +285,34 @@ function renderGallery(images) {
     });
 }
 
-// 필터 활성화 및 갤러리 업데이트
-function setActiveFilter(filter) {
-    currentFilter = filter;
+// 토글 필터 (태그 버튼 클릭)
+function toggleFilter(tag) {
+    if (activeFilters.has(tag)) {
+        // 이미 활성화된 필터 → 비활성화
+        activeFilters.delete(tag);
+    } else {
+        // 비활성화된 필터 → 활성화
+        activeFilters.add(tag);
+    }
 
-    // 활성 버튼 업데이트
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.filter === filter) {
-            btn.classList.add('active');
-        }
-    });
+    // 버튼 상태 업데이트
+    updateFilterButtons();
 
     // 갤러리 갱신
-    const filteredImages = getFilteredImages(filter);
+    const filteredImages = getFilteredImages();
     renderGallery(filteredImages);
+}
+
+// 필터 버튼 상태 ���데이트
+function updateFilterButtons() {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        const tag = btn.dataset.filter;
+        if (activeFilters.has(tag)) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
 }
 
 // ==================== 모달 기능 ====================
@@ -341,13 +348,10 @@ function closeModal() {
 
 // ==================== 초기화 ====================
 document.addEventListener('DOMContentLoaded', function() {
-    // 모든 태그 추출
-    allTags = extractAllTags();
-
     // 필터 버튼 렌더링
     renderFilterButtons();
 
-    // 초기 갤러리 렌더링
+    // 초기 갤러리 렌더링 (모든 이미지)
     renderGallery(galleryImages);
 
     // 모달 닫기 이벤트

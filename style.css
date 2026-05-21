@@ -26,7 +26,7 @@ html {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -114,15 +114,55 @@ html {
     padding: 60px 0;
 }
 
-/* ==================== 갤러리 섹션 (Pinterest 스타일) ==================== */
+/* ==================== 필터 섹션 ==================== */
+.filter-section {
+    margin-bottom: 60px;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--hover-color);
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    background-color: var(--hover-color);
+    color: var(--secondary-text);
+    border: 1px solid #555555;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+}
+
+.filter-btn:hover {
+    background-color: #444444;
+    color: var(--primary-text);
+}
+
+.filter-btn.active {
+    background-color: var(--primary-text);
+    color: var(--primary-bg);
+    border-color: var(--primary-text);
+}
+
+/* ==================== 갤러리 섹션 (CSS Grid) ==================== */
 .gallery-section {
     padding: 40px 0;
 }
 
 .gallery-grid {
-    column-count: 3;
-    column-gap: 20px;
-    column-fill: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    grid-auto-rows: auto;
 }
 
 .gallery-item {
@@ -133,10 +173,7 @@ html {
     border-radius: 4px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     transition: transform var(--transition);
-    margin-bottom: 20px;
-    break-inside: avoid;
-    display: inline-block;
-    width: 100%;
+    aspect-ratio: 1;
 }
 
 /* 스켈레톤 로딩 */
@@ -157,8 +194,8 @@ html {
 
 .gallery-item img {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
+    object-fit: cover;
     transition: transform var(--transition);
 }
 
@@ -174,16 +211,39 @@ html {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     opacity: 0;
     transition: opacity var(--transition);
-    font-size: 16px;
-    font-weight: 600;
+    padding: 20px;
+    text-align: center;
 }
 
 .gallery-item:hover .overlay {
     opacity: 1;
+}
+
+.overlay-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--primary-text);
+}
+
+.overlay-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+}
+
+.overlay-tag {
+    font-size: 11px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 4px 8px;
+    border-radius: 3px;
+    color: var(--accent-color);
 }
 
 /* ==================== 모달 팝업 ==================== */
@@ -238,6 +298,7 @@ html {
     max-height: 60vh;
     object-fit: contain;
     margin-top: 40px;
+    border-radius: 4px;
 }
 
 .modal-info {
@@ -249,12 +310,30 @@ html {
 .modal-info h2 {
     font-size: 24px;
     margin-bottom: 15px;
+    color: var(--primary-text);
 }
 
 .modal-info p {
     color: var(--secondary-text);
     font-size: 14px;
     line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.modal-tag {
+    font-size: 12px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 4px;
+    color: var(--accent-color);
+    border: 1px solid #555555;
 }
 
 /* ==================== About 섹션 ==================== */
@@ -395,27 +474,49 @@ html {
     letter-spacing: 0.5px;
 }
 
-/* ==================== 반응형: 태블릿 (가로 모드 포함) ==================== */
+/* ==================== 반응형: 태블릿 (가로 모드) ==================== */
 @media (max-width: 1024px) {
     .gallery-grid {
-        column-count: 2;
-        column-gap: 15px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
     }
 
-    .gallery-item {
-        margin-bottom: 15px;
+    .container {
+        padding: 0 15px;
     }
 }
 
-/* ==================== 반응형: 모바일 (세로 모드) - 최소 2열 유지 ==================== */
+/* ==================== 반응형: 모바일 (세로 모드) ==================== */
 @media (max-width: 768px) {
     .gallery-grid {
-        column-count: 2;
-        column-gap: 15px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
 
     .gallery-item {
-        margin-bottom: 15px;
+        aspect-ratio: 1;
+    }
+
+    .filter-section {
+        margin-bottom: 40px;
+        padding: 20px 0;
+    }
+
+    .filter-buttons {
+        gap: 10px;
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+
+    .overlay {
+        font-size: 12px;
+    }
+
+    .overlay-tag {
+        font-size: 10px;
     }
 
     .hero-section {
@@ -436,6 +537,22 @@ html {
 
     .main-content {
         padding: 40px 0;
+    }
+
+    .modal-image {
+        max-height: 50vh;
+    }
+
+    .modal-info {
+        padding: 20px;
+    }
+
+    .modal-info h2 {
+        font-size: 20px;
+    }
+
+    .modal-info p {
+        font-size: 13px;
     }
 }
 

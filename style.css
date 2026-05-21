@@ -407,7 +407,7 @@ html {
     }
 }
 
-/* ==================== 반응형: 모바일 (세로 모드) ==================== */
+/* ==================== 반응형: 모바일 (세로 모드) - 최소 2열 유지 ==================== */
 @media (max-width: 768px) {
     .gallery-grid {
         column-count: 2;
@@ -436,65 +436,6 @@ html {
 
     .main-content {
         padding: 40px 0;
-    }
-}
-
-/* ==================== 반응형: 작은 모바일 ==================== */
-@media (max-width: 480px) {
-    .gallery-grid {
-        column-count: 1;
-        column-gap: 10px;
-    }
-
-    .gallery-item {
-        margin-bottom: 10px;
-    }
-
-    .gallery-item .overlay {
-        font-size: 12px;
-    }
-
-    .hero-section {
-        height: 200px;
-        margin-bottom: 30px;
-    }
-
-    .about-title,
-    .contact-title {
-        font-size: 26px;
-    }
-
-    .about-paragraph {
-        font-size: 14px;
-        text-align: left;
-    }
-
-    .contact-subtitle {
-        font-size: 14px;
-    }
-
-    .modal-content {
-        border-radius: 0;
-    }
-
-    .modal-image {
-        max-height: 50vh;
-    }
-
-    .modal-info {
-        padding: 20px;
-    }
-
-    .modal-info h2 {
-        font-size: 20px;
-    }
-
-    .modal-info p {
-        font-size: 13px;
-    }
-
-    .main-content {
-        padding: 20px 0;
     }
 }
 

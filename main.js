@@ -1,181 +1,181 @@
 // ==================== 갤러리 데이터 (객체 배열) ====================
 const galleryImages = [
     {
-        url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=auto&q=80',
         title: 'Portrait Session',
         description: 'A professional portrait photography session',
         tags: ['portrait', 'people', 'professional']
     },
     {
-        url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=auto&q=80',
         title: 'Natural Light',
         description: 'Captured in natural daylight',
         tags: ['portrait', 'natural light', 'outdoor']
     },
     {
-        url: 'https://images.unsplash.com/photo-1517457373614-b7152f800fd1?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1517457373614-b7152f800fd1?w=600&h=auto&q=80',
         title: 'Studio Work',
         description: 'Professional studio photography',
         tags: ['studio', 'fashion', 'professional']
     },
     {
-        url: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=600&h=auto&q=80',
         title: 'Landscape Beauty',
         description: 'Beautiful landscape photography',
         tags: ['landscape', 'nature', 'outdoor']
     },
     {
-        url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=auto&q=80',
         title: 'People Photography',
         description: 'Candid people photography',
         tags: ['people', 'candid', 'portrait']
     },
     {
-        url: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=auto&q=80',
         title: 'Nature Details',
         description: 'Close-up nature photography',
         tags: ['nature', 'details', 'macro']
     },
     {
-        url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=auto&q=80',
         title: 'Mountain Views',
         description: 'Scenic mountain landscape',
         tags: ['landscape', 'nature', 'outdoor']
     },
     {
-        url: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&h=auto&q=80',
         title: 'Monochrome Art',
         description: 'Black and white artistic photography',
         tags: ['black and white', 'art', 'studio']
     },
     {
-        url: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=auto&q=80',
         title: 'Urban Style',
         description: 'Urban fashion photography',
         tags: ['fashion', 'urban', 'style']
     },
     {
-        url: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=600&h=auto&q=80',
         title: 'Golden Hour',
         description: 'Photography during golden hour',
         tags: ['outdoor', 'natural light', 'landscape']
     },
     {
-        url: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&h=auto&q=80',
         title: 'Professional Portrait',
         description: 'High-end professional portrait',
         tags: ['portrait', 'professional', 'people']
     },
     {
-        url: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=600&h=auto&q=80',
         title: 'Ocean Waves',
         description: 'Seascape photography',
         tags: ['landscape', 'nature', 'outdoor']
     },
     {
-        url: 'https://images.unsplash.com/photo-1511379938547-c1f69b13d835?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1511379938547-c1f69b13d835?w=600&h=auto&q=80',
         title: 'Fashion Forward',
         description: 'Contemporary fashion shoot',
         tags: ['fashion', 'style', 'studio']
     },
     {
-        url: 'https://images.unsplash.com/photo-1606933248051-5ce98adc16fa?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1606933248051-5ce98adc16fa?w=600&h=auto&q=80',
         title: 'Artistic Vision',
         description: 'Artistic and creative photography',
         tags: ['art', 'creative', 'studio']
     },
     {
-        url: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=auto&q=80',
         title: 'Street Photography',
         description: 'Candid street photography',
         tags: ['street', 'urban', 'candid']
     },
     {
-        url: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=600&h=auto&q=80',
         title: 'Sunset Landscape',
         description: 'Landscape during sunset',
         tags: ['landscape', 'nature', 'outdoor']
     },
     {
-        url: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=auto&q=80',
         title: 'Elegant Portrait',
         description: 'Elegant and sophisticated portrait',
         tags: ['portrait', 'elegant', 'professional']
     },
     {
-        url: 'https://images.unsplash.com/photo-1507527173827-98efcfb09865?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1507527173827-98efcfb09865?w=600&h=auto&q=80',
         title: 'Casual Beauty',
         description: 'Natural beauty photography',
         tags: ['portrait', 'natural', 'people']
     },
     {
-        url: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=auto&q=80',
         title: 'Model Photography',
         description: 'Professional model shoot',
         tags: ['fashion', 'model', 'studio']
     },
     {
-        url: 'https://images.unsplash.com/photo-1500707802500-b94f14775281?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1500707802500-b94f14775281?w=600&h=auto&q=80',
         title: 'Desert Landscape',
         description: 'Desert landscape photography',
         tags: ['landscape', 'nature', 'outdoor']
     },
     {
-        url: 'https://images.unsplash.com/photo-1532317386003-74cebe250c8d?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1532317386003-74cebe250c8d?w=600&h=auto&q=80',
         title: 'Black and White Portrait',
         description: 'Monochrome portrait session',
         tags: ['black and white', 'portrait', 'studio']
     },
     {
-        url: 'https://images.unsplash.com/photo-1514306688908-79e6f4f926bf?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1514306688908-79e6f4f926bf?w=600&h=auto&q=80',
         title: 'Product Photography',
         description: 'Professional product photography',
         tags: ['product', 'studio', 'professional']
     },
     {
-        url: 'https://images.unsplash.com/photo-1520763185298-1b434c919abe?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1520763185298-1b434c919abe?w=600&h=auto&q=80',
         title: 'Lifestyle',
         description: 'Lifestyle and everyday photography',
         tags: ['lifestyle', 'candid', 'outdoor']
     },
     {
-        url: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=auto&q=80',
         title: 'Corporate Portrait',
         description: 'Professional corporate headshot',
         tags: ['portrait', 'corporate', 'professional']
     },
     {
-        url: 'https://images.unsplash.com/photo-1521133573892-e44906baee46?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1521133573892-e44906baee46?w=600&h=auto&q=80',
         title: 'Wedding Photography',
         description: 'Candid wedding photography',
         tags: ['wedding', 'people', 'candid']
     },
     {
-        url: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=auto&q=80',
         title: 'Macro Photography',
         description: 'Detailed macro photography',
         tags: ['macro', 'details', 'nature']
     },
     {
-        url: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=600&h=auto&q=80',
         title: 'Travel Photography',
         description: 'Travel and adventure photography',
         tags: ['travel', 'landscape', 'outdoor']
     },
     {
-        url: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=600&h=auto&q=80',
         title: 'Nature in Detail',
         description: 'Detailed nature photography',
         tags: ['nature', 'details', 'macro']
     },
     {
-        url: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&h=auto&q=80',
         title: 'Artistic Black and White',
         description: 'Creative black and white art',
         tags: ['black and white', 'art', 'creative']
     },
     {
-        url: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=500&fit=crop',
+        url: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=auto&q=80',
         title: 'Street Fashion',
         description: 'Street fashion photography',
         tags: ['fashion', 'street', 'urban']
@@ -205,34 +205,6 @@ function getFilteredImages() {
     return galleryImages.filter(image => 
         image.tags.some(tag => activeFilters.has(tag))
     );
-}
-
-// ==================== Masonry 높이 계산 함수 ====================
-function calculateMasonryHeights() {
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    
-    galleryItems.forEach(item => {
-        const img = item.querySelector('img');
-        
-        // 이미지가 로드되었는지 확인
-        if (img && img.complete) {
-            // 이미지의 실제 높이를 계산
-            const itemHeight = item.getBoundingClientRect().height;
-            const rowSpan = Math.ceil(itemHeight / 10);
-            
-            // grid-row-end에 span 값 할당
-            item.style.gridRowEnd = `span ${rowSpan}`;
-        } else if (img) {
-            // 이미지가 아직 로드 중이면 로드 완료 후 계산
-            img.addEventListener('load', function calculateHeight() {
-                setTimeout(() => {
-                    const itemHeight = item.getBoundingClientRect().height;
-                    const rowSpan = Math.ceil(itemHeight / 10);
-                    item.style.gridRowEnd = `span ${rowSpan}`;
-                }, 0);
-            });
-        }
-    });
 }
 
 // ==================== DOM 렌더링 함수 ====================
@@ -273,8 +245,6 @@ function renderGallery(images) {
         // 이미지 로드 완료 시 스켈레톤 제거
         img.addEventListener('load', function() {
             galleryItem.classList.remove('loading');
-            // 이미지 로드 완료 후 높이 재계산
-            calculateMasonryHeights();
         });
 
         // 이미지 로드 실패
@@ -313,9 +283,6 @@ function renderGallery(images) {
 
         galleryGrid.appendChild(galleryItem);
     });
-
-    // 갤러리 렌더링 완료 후 높이 계산
-    setTimeout(calculateMasonryHeights, 100);
 }
 
 // 토글 필터 (태그 버튼 클릭)
@@ -431,14 +398,4 @@ document.addEventListener('DOMContentLoaded', function() {
             header.style.boxShadow = 'none';
         }
     });
-});
-
-// 페이지 로드 완료 후 한 번 더 높이 계산
-window.addEventListener('load', function() {
-    calculateMasonryHeights();
-});
-
-// 윈도우 리사이즈 시 높이 재계산
-window.addEventListener('resize', function() {
-    calculateMasonryHeights();
 });

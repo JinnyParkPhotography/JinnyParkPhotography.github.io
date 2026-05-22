@@ -183,7 +183,9 @@ const galleryImages = [
 ];
 
 // ==================== 상태 관리 ====================
-let activeFilters = new Set(); // 활성화된 필터들을 저장하는 Set
+let activeFilters = new Set();
+let loadedImagesCount = 0;
+let totalImagesToLoad = 0;
 
 // ==================== 유틸리티 함수 ====================
 // 모든 고유 태그 추출
@@ -198,13 +200,23 @@ function extractAllTags() {
 // 필터된 이미지 가져오기
 function getFilteredImages() {
     if (activeFilters.size === 0) {
-        // 활성화된 필터가 없으면 모든 이미지 반환 (전체 보기)
         return galleryImages;
     }
-    // 활성화된 필터 중 하나라도 포함하는 이미지 반환
     return galleryImages.filter(image => 
         image.tags.some(tag => activeFilters.has(tag))
     );
+}
+
+// ==================== 스켈레톤 로딩 렌더링 ====================
+function renderSkeletonLoading(images) {
+    const galleryGrid = document.getElementById('galleryGrid');
+    galleryGrid.innerHTML = '';
+
+    images.forEach(() => {
+        const skeletonItem = document.createElement('div');
+        skeletonItem.className = 'gallery-item skeleton-loading';
+        galleryGrid.appendChild(skeletonItem);
+    });
 }
 
 // ==================== DOM 렌더링 함수 ====================
@@ -214,7 +226,6 @@ function renderFilterButtons() {
     const allTags = extractAllTags();
     filterButtonsContainer.innerHTML = '';
 
-    // 태그 버튼들
     allTags.forEach(tag => {
         const btn = document.createElement('button');
         btn.className = 'filter-btn';
@@ -230,75 +241,87 @@ function renderFilterButtons() {
 // 갤러리 렌더링
 function renderGallery(images) {
     const galleryGrid = document.getElementById('galleryGrid');
-    galleryGrid.innerHTML = '';
+    
+    // 스켈레톤 로딩 표시
+    renderSkeletonLoading(images);
+    
+    // 이미지 로드 카운터 초기화
+    loadedImagesCount = 0;
+    totalImagesToLoad = images.length;
 
-    images.forEach((image, index) => {
-        const galleryItem = document.createElement('div');
-        galleryItem.className = 'gallery-item loading';
-        galleryItem.dataset.index = index;
-
-        const img = document.createElement('img');
-        img.src = image.url;
-        img.alt = image.title;
-        img.loading = 'lazy';
-
-        // 이미지 로드 완료 시 스켈레톤 제거
-        img.addEventListener('load', function() {
-            galleryItem.classList.remove('loading');
+    // 모든 이미지를 미리 로드
+    const imagePromises = images.map((image, index) => {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => {
+                loadedImagesCount++;
+                resolve({ image, index, success: true });
+            };
+            img.onerror = () => {
+                loadedImagesCount++;
+                resolve({ image, index, success: false });
+            };
+            img.src = image.url;
         });
+    });
 
-        // 이미지 로드 실패
-        img.addEventListener('error', function() {
-            galleryItem.classList.remove('loading');
-            galleryItem.style.backgroundColor = '#555555';
+    // 모든 이미지 로드 완료 후 갤러리 렌더링
+    Promise.all(imagePromises).then((results) => {
+        galleryGrid.innerHTML = '';
+
+        images.forEach((image, index) => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            galleryItem.dataset.index = index;
+
+            const img = document.createElement('img');
+            img.src = image.url;
+            img.alt = image.title;
+            img.loading = 'lazy';
+
+            const overlay = document.createElement('div');
+            overlay.className = 'overlay';
+
+            const overlayTitle = document.createElement('div');
+            overlayTitle.className = 'overlay-title';
+            overlayTitle.textContent = image.title;
+
+            const overlayTags = document.createElement('div');
+            overlayTags.className = 'overlay-tags';
+
+            image.tags.forEach(tag => {
+                const tagSpan = document.createElement('span');
+                tagSpan.className = 'overlay-tag';
+                tagSpan.textContent = tag;
+                overlayTags.appendChild(tagSpan);
+            });
+
+            overlay.appendChild(overlayTitle);
+            overlay.appendChild(overlayTags);
+
+            galleryItem.appendChild(img);
+            galleryItem.appendChild(overlay);
+
+            // 클릭 이벤트
+            galleryItem.addEventListener('click', function() {
+                openModal(image);
+            });
+
+            galleryGrid.appendChild(galleryItem);
         });
-
-        const overlay = document.createElement('div');
-        overlay.className = 'overlay';
-
-        const overlayTitle = document.createElement('div');
-        overlayTitle.className = 'overlay-title';
-        overlayTitle.textContent = image.title;
-
-        const overlayTags = document.createElement('div');
-        overlayTags.className = 'overlay-tags';
-
-        image.tags.forEach(tag => {
-            const tagSpan = document.createElement('span');
-            tagSpan.className = 'overlay-tag';
-            tagSpan.textContent = tag;
-            overlayTags.appendChild(tagSpan);
-        });
-
-        overlay.appendChild(overlayTitle);
-        overlay.appendChild(overlayTags);
-
-        galleryItem.appendChild(img);
-        galleryItem.appendChild(overlay);
-
-        // 클릭 이벤트
-        galleryItem.addEventListener('click', function() {
-            openModal(image);
-        });
-
-        galleryGrid.appendChild(galleryItem);
     });
 }
 
 // 토글 필터 (태그 버튼 클릭)
 function toggleFilter(tag) {
     if (activeFilters.has(tag)) {
-        // 이미 활성화된 필터 → 비활성화
         activeFilters.delete(tag);
     } else {
-        // 비활성화된 필터 → 활성화
         activeFilters.add(tag);
     }
 
-    // 버튼 상태 업데이트
     updateFilterButtons();
 
-    // 갤러리 갱신
     const filteredImages = getFilteredImages();
     renderGallery(filteredImages);
 }
@@ -327,7 +350,6 @@ function openModal(image) {
     modalTitle.textContent = image.title;
     modalDescription.textContent = image.description;
 
-    // 모달 태그 렌더링
     modalTags.innerHTML = '';
     image.tags.forEach(tag => {
         const tagSpan = document.createElement('span');
